@@ -1,0 +1,58 @@
+button{
+  background-color: deeppink;
+  color:white;
+  margin:10px;
+  width:15%;
+  border-radius:15px;
+  height:40px;
+}
+.showDiv{
+  height:50px;
+  width:100px;
+  background-color:rgb(0, 162, 255);
+  color:white
+
+}
+.square{
+  background-color:red;
+}
+.square.square-entering
+{
+  opacity:1;
+  transform:translateX(0%);
+}
+.square.square-entered
+{
+  background-color:blue;
+}
+.square.square-exiting
+{
+  background-color: green;
+}
+.square.square-exited
+{
+  opacity:0;
+  transform: translateX(100%);
+}
+header{
+  background-color: grey;
+}
+
+/*====================== CSS Transitions ========== */
+.square.false
+{
+  background-color: #feaaa3;
+  transform: translateX(-100%);
+}
+
+.square.true
+{
+  transform: translateX(0%);
+}
+
+.square-enter.square-enter-active{
+  background-color: blue;
+}
+.square-exit.square-exit-active{
+  background-color: green;
+}
