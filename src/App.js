@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component } from 'react';
+import Header from './components/header';
+import NewsList from './components/news_list';
+import JSON from './db.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  
+  state={
+    news:JSON,
+    filtered:[]
+  }
+  
+  getKeyword=(event)=>{
+    // console.log(event.target.value);
+    let keyword=event.target.value;
+    let filtered=this.state.news.filter((item)=>{
+      return item.title.indexOf(keyword) >-1;
+    })
+    this.setState( {
+      filtered
+    })
+   
+  }
+  render()
+  {
+    const {news,filtered}=this.state;
+    return(
+      <div>
+        <Header getKeyword={this.getKeyword}/>
+        <NewsList news={filtered.length===0? news : filtered} />
+      </div>
+      
+    )
+  }
 }
 
 export default App;
